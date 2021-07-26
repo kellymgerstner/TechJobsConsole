@@ -64,7 +64,8 @@ namespace TechJobsConsole
                     if (columnChoice.Equals("all"))
                     {
                         //Call FindByValue
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        searchResults = JobData.FindByValue(columnChoice, searchTerm);
+                        PrintJobs(searchResults);
                     }
                     else
                     {
@@ -124,10 +125,10 @@ namespace TechJobsConsole
 
             //loop through each dictionary in the list
             //nested loop through keys in each dictionary
-
+            Console.WriteLine("*** Job Information ***");
             foreach (Dictionary<string, string> job in someJobs)
             {
-                Console.WriteLine("*****");
+                Console.WriteLine("*** Job Values ***");
                 foreach (KeyValuePair<string, string> entry in job)
                 {
                     Console.WriteLine(entry.Key + ": " + entry.Value);
