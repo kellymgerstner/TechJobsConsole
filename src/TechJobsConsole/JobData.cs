@@ -39,7 +39,7 @@ namespace TechJobsConsole
         }
 
         public static List<Dictionary<string, string>> FindByColumnAndValue(string column, string value)
-            //uses search - needs case insensitivity
+        //uses search - needs case insensitivity
         {
             // load data, if not already loaded
             LoadData();
@@ -140,7 +140,7 @@ namespace TechJobsConsole
             return rowValues.ToArray();
         }
 
-        public static List<Dictionary<string, string>> FindByValue(string column, string value)
+        public static List<Dictionary<string, string>> FindByValue(string value)
         {
             // load data, if not already loaded
             LoadData();
@@ -149,16 +149,18 @@ namespace TechJobsConsole
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
-                string aValue = row[column].ToLower();
-
-                if (aValue.Contains(value.ToLower()))
+                foreach (string column in row.Keys)
                 {
-                    jobs.Add(row);
+                    string aValue = row[column];
+                    if (aValue.ToLower().Contains(value.ToLower()))
+                    {
+                        jobs.Add(row);
+                    }
                 }
             }
-
             return jobs;
         }
     }
 }
+
 

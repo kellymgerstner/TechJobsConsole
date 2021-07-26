@@ -64,7 +64,7 @@ namespace TechJobsConsole
                     if (columnChoice.Equals("all"))
                     {
                         //Call FindByValue
-                        searchResults = JobData.FindByValue(columnChoice, searchTerm);
+                        searchResults = JobData.FindByValue(searchTerm);
                         PrintJobs(searchResults);
                     }
                     else
